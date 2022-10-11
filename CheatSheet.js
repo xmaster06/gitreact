@@ -20,7 +20,7 @@ Componentimiz veya üst componentler tarafından
 değiştirilebilecek "şeyler" olmalıdır!
 */
 
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
  
 let myTimer;
  
@@ -70,4 +70,31 @@ oluşturulup isteğin belli bir zaman bekledikten sonra
 gönderilmesi ve arada oluşan isteklerin de clearTimeout ile
 bellekten silinmesi sağlanmalıdır. 
 Böylelikle yumuşak bir geçiş ve kullanıcı deneyimi sağlanır.
+*/
+
+/* useReducer Kullanımı
+Bazı durumlarda özellikle birbiri ile ilişkili verileriniz
+varsa useState kullanımı state yönetimi için yetersiz kalabilir.
+Veya birbiri ile ilişkili statelerin güncellenme zamanları
+farklılık gösterdiği için bazıları önce bazıları sonra
+güncelleneceği için state yönetiminde tutarsızlıklar ortaya
+çıkabilir.
+Her ne kadar küçük uygulamalarda bu önemli bir sorun teşkil
+etmiyor gibi gözükse de uygulama komplek hale geldikçe yeni
+sorunlar ve spagetti kod ortaya çıkacaktır.
+useReducer state leri daha profesyonel kullanmak için
+tasarlanmıştır. Bu sayede ilişkili statelerin kontrolünü daha
+rahat sağlayabiliriz. */
+
+/* useReducer'ı Anlamak */
+const [state,dispatcFn] = useReducer(reducerFn,inialState,initFn);
+
+/*
+state       -> Güncel state görüntüsü
+dispatchFn  -> State'i güncelleyen fonksiyon
+reducerFn   -> Güncel state'i alıp yeni state döndürür
+initialState-> State'e başlangıç değeri vermek için kullanılır
+initFn      -> Başlangıç değerini fonksiyon ile vermek için
+
+
 */
