@@ -56,3 +56,18 @@ const MyComponent = (props) => {
 5) setTimeout eklenmedi
 Çünkü o componentten bağımsız bir Javascript fonksiyonu
 */
+
+/* useEffect'in Timer ile birlikte kullanımı
+useEffect bağımlılık olmadan çalıştığında component her render
+edildiğinde veya bağımlılıklara bağlı olarak bağımlılıklar
+değiştiğinde çalışır.
+Bu durum bazı sorunlara sebep olabilir. Örneğin uzak sunucuya
+http isteği göndermemiz gereken bir durumda istek aşırı
+tekrarlanacak dolayısıyla da işlemci ve sunucuda kasılma ve
+hatalar ortaya çıkacaktır.
+Bunun önüne geçmek için setTimeout yardımıyla Timer
+oluşturulup isteğin belli bir zaman bekledikten sonra
+gönderilmesi ve arada oluşan isteklerin de clearTimeout ile
+bellekten silinmesi sağlanmalıdır. 
+Böylelikle yumuşak bir geçiş ve kullanıcı deneyimi sağlanır.
+*/
