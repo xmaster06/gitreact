@@ -1,10 +1,38 @@
-import React from 'react';
-
-React.createContext('benim stateim!');
+import React, { useState, useEffect } from 'react';
 
 // Bir component değil context oluşturuyoruz.
 const AuthContext = React.createContext({
-    isLoggedIn: false
+    isLoggedIn: false,
+    onLogout: () => { },
+    onLogin : (email,password)=>{}
 });
+
+export const AuthContextProvider = (props) => {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(()=>{
+        const loginInformation = localStorage.getItem('isLoggedIn');
+        if(loginInformation === '1'){
+          setIsLoggedIn(true);
+        }
+      },[]); 
+
+    const logoutHandler = () => {
+        localStorage.removeItem('isLoggedIn');
+        setIsLoggedIn(false);
+    }
+
+    const loginHandler = () => {
+        localStorage.setItem('isLoggedIn','1');
+        setIsLoggedIn(true);
+    }
+
+    return <AuthContext.Provider
+        value={{
+            isLoggedIn: isLoggedIn,
+            onLogout: logoutHandler,
+            onLogin: loginHandler
+        }}>{props.children}</AuthContext.Provider>;
+}
 
 export default AuthContext;
