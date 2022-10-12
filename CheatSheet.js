@@ -95,6 +95,15 @@ dispatchFn  -> State'i güncelleyen fonksiyon
 reducerFn   -> Güncel state'i alıp yeni state döndürür
 initialState-> State'e başlangıç değeri vermek için kullanılır
 initFn      -> Başlangıç değerini fonksiyon ile vermek için
+*/
 
+/* useContext Kullanımı */
+/*
+Componentler arası veriyi props ile geçirmek ve sürekli
+forward etmek büyük uygulamalarda sorunlara sebep olabilir.
+Prop chain dediğimiz prop zincirleri oluşabilir.
+Context bu sorunun önüne geçmek için kullanılır.
+Component dosyalarınızı PascalCase şeklinde yazdığımız için
+Context dosyalarını kebap-case şeklinde yazıyoruz.
 
 */
