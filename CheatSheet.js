@@ -107,3 +107,21 @@ Component dosyalarınızı PascalCase şeklinde yazdığımız için
 Context dosyalarını kebap-case şeklinde yazıyoruz.
 
 */
+// useContext Sınırlılıkları
+
+/* UseContext yüksek frekanslı değişiklikler için uygun değil.
+Yani milisaniyeler ile ifade edilen ve sürekli yapılan
+güncellemeleri takip etmek için iyi bir çözüm değil.
+Bunun dışında props ile aktarım yapılması gereken küçük
+componentler de useContext kullanmak gereksiz olabilir.
+*/
+
+/* Hookların Kuralları
+useEffect, useState, useReducer, useContext
+1) Hooklar yalnızca React fonksiyonları içinde çağrılmalıdır
+React Component fonksiyonları veya Custom hooklar içinde
+2) Hooklar componentler içinde Top Level de çağrılmalı
+Componentlerin içindeki fonksiyonlardan (deep) çağrılamaz
+If veya Switch gibi blockların içinden çağrılamaz
+3) useEffecte tüm bağımlılıklar eklenmelidir
+*/
